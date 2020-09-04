@@ -40,9 +40,9 @@ for i,j in arcos:
         mdl.add_indicator(x[(i,j)],d[i]+1==d[j], 
                           name='order_(%d,_%d)'%(i, j))
 
-mdl.parameters.timelimit=150
-mdl.parameters.mip.strategy.branch=1
-mdl.parameters.mip.tolerances.mipgap=0.15
+#mdl.parameters.timelimit=150
+#mdl.parameters.mip.strategy.branch=0
+mdl.parameters.mip.tolerances.mipgap=0
 
 solucion = mdl.solve(log_output=True)
 
