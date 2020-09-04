@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from docplex.mp.model import Model
 import docplex.mp.solution as sol
 
-data = np.loadtxt('data/wi29.tsp.txt')
+data = np.loadtxt('data/dj38.tsp')
 n = data.shape[0] # NUMERO DE CIUDADES
 cities = [i for i in range(n)]
 arcos =[(i,j) for i in cities for j in cities if i!=j]
@@ -41,8 +41,8 @@ for i,j in arcos:
                           name='order_(%d,_%d)'%(i, j))
 
 #mdl.parameters.timelimit=150
-#mdl.parameters.mip.strategy.branch=0
-mdl.parameters.mip.tolerances.mipgap=0
+mdl.parameters.mip.strategy.branch=1
+mdl.parameters.mip.tolerances.mipgap=0.075
 
 solucion = mdl.solve(log_output=True)
 
